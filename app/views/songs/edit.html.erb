@@ -24,7 +24,7 @@
           Artist
         </label>
 
-        <input type="text" id="artist_id" name="artist_id" placeholder="Artist" class="form-control" value="<%= @song.artist_id %>">
+        <%= select_tag(:artist_id, options_from_collection_for_select(Artist.all, :id, :name, @song.artist_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for name -->
