@@ -47,8 +47,6 @@ class SongVotesController < ApplicationController
 
   def update
     @song_vote = SongVote.find(params[:id])
-
-    @song_vote.user_id = params[:user_id]
     @song_vote.song_id = params[:song_id]
 
     save_status = @song_vote.save
