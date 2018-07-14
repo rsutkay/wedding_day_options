@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Ones
+    <a href="/ones/new" class="btn btn-lg btn-success">New One</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @ones.each do |one| %>
+      <tr>
+        <td><%= one.user_id %></td>
+        <td><%= one.name %></td>
+        <td>
+          <a href="/ones/<%= one.id %>" class="btn btn-primary">Show</a>
+          <a href="/ones/<%= one.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_one/<%= one.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

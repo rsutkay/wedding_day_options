@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the One resource:
+  # CREATE
+  get "/ones/new", :controller => "ones", :action => "new"
+  post "/create_one", :controller => "ones", :action => "create"
+
+  # READ
+  get "/ones", :controller => "ones", :action => "index"
+  get "/ones/:id", :controller => "ones", :action => "show"
+
+  # UPDATE
+  get "/ones/:id/edit", :controller => "ones", :action => "edit"
+  post "/update_one/:id", :controller => "ones", :action => "update"
+
+  # DELETE
+  get "/delete_one/:id", :controller => "ones", :action => "destroy"
+  #------------------------------
+
   # Routes for the Drink_vote resource:
   # CREATE
   get "/drink_votes/new", :controller => "drink_votes", :action => "new"
