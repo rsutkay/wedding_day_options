@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Song resource:
+  # CREATE
+  get "/songs/new", :controller => "songs", :action => "new"
+  post "/create_song", :controller => "songs", :action => "create"
+
+  # READ
+  get "/songs", :controller => "songs", :action => "index"
+  get "/songs/:id", :controller => "songs", :action => "show"
+
+  # UPDATE
+  get "/songs/:id/edit", :controller => "songs", :action => "edit"
+  post "/update_song/:id", :controller => "songs", :action => "update"
+
+  # DELETE
+  get "/delete_song/:id", :controller => "songs", :action => "destroy"
+  #------------------------------
+
   # Routes for the One resource:
   # CREATE
   get "/ones/new", :controller => "ones", :action => "new"

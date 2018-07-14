@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Song #<%= @song.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Artist</dt>
+      <dd><%= @song.artist_id %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @song.name %></dd>
+
+      <dt>User</dt>
+      <dd><%= @song.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/songs" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/songs/<%= @song.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_song/<%= @song.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
