@@ -16,7 +16,7 @@
 
       <% @drink_votes.each do |drink_vote| %>
       <tr>
-        <td><%= drink_vote.user_id %></td>
+        <td><%= drink_vote.user.email %></td>
         <td><%= drink_vote.drink_id %></td>
         <td>
           <a href="/drink_votes/<%= drink_vote.id %>" class="btn btn-primary">Show</a>
