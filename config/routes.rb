@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "drinks#index"
   # Routes for the Bus resource:
   # CREATE
   get "/buses/new", :controller => "buses", :action => "new"
