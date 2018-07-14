@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Bus resource:
+  # CREATE
+  get "/buses/new", :controller => "buses", :action => "new"
+  post "/create_bus", :controller => "buses", :action => "create"
+
+  # READ
+  get "/buses", :controller => "buses", :action => "index"
+  get "/buses/:id", :controller => "buses", :action => "show"
+
+  # UPDATE
+  get "/buses/:id/edit", :controller => "buses", :action => "edit"
+  post "/update_bus/:id", :controller => "buses", :action => "update"
+
+  # DELETE
+  get "/delete_bus/:id", :controller => "buses", :action => "destroy"
+  #------------------------------
+
   # Routes for the Song_vote resource:
   # CREATE
   get "/song_votes/new", :controller => "song_votes", :action => "new"
