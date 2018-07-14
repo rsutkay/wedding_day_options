@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.page(params[:page]).per(10)
 
     render("artists/index.html.erb")
   end

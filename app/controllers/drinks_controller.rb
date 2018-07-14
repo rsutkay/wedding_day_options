@@ -10,7 +10,7 @@ class DrinksController < ApplicationController
   end
 
   def index
-    @drinks = Drink.all
+    @drinks = Drink.page(params[:page]).per(10)
 
     render("drinks/index.html.erb")
   end

@@ -10,7 +10,7 @@ class SongVotesController < ApplicationController
   end
 
   def index
-    @song_votes = SongVote.all
+    @song_votes = SongVote.page(params[:page]).per(10)
 
     render("song_votes/index.html.erb")
   end

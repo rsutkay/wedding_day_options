@@ -1,6 +1,6 @@
 class OnesController < ApplicationController
   def index
-    @ones = One.all
+    @ones = One.page(params[:page]).per(10)
 
     render("ones/index.html.erb")
   end
