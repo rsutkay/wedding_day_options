@@ -16,7 +16,7 @@
 
       <% @ones.each do |one| %>
       <tr>
-        <td><%= one.user_id %></td>
+        <td><%= one.user.email %></td>
         <td><%= one.name %></td>
         <td>
           <a href="/ones/<%= one.id %>" class="btn btn-primary">Show</a>
