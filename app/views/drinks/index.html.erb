@@ -18,7 +18,7 @@
       <% @drinks.each do |drink| %>
       <tr>
         <td><%= drink.name %></td>
-        <td><%= drink.category_id %></td>
+        <td><%= drink.category.name %></td>
         <td><%= drink.user_id %></td>
         <td>
           <a href="/drinks/<%= drink.id %>" class="btn btn-primary">Show</a>
