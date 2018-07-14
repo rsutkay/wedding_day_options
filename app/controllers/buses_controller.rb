@@ -1,4 +1,14 @@
 class BusesController < ApplicationController
+  before_action :current_user_must_be_bus_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_bus_user
+    bus = Bus.find(params[:id])
+
+    unless current_user == bus.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @buses = Bus.all
 
