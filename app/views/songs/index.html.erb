@@ -22,8 +22,11 @@
         <td><%= song.user.email %></td>
         <td>
           <a href="/songs/<%= song.id %>" class="btn btn-primary">Show</a>
-          <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_song/<%= song.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == song.user %>
+            <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_song/<%= song.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
