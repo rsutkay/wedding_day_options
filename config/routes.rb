@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Drink_vote resource:
+  # CREATE
+  get "/drink_votes/new", :controller => "drink_votes", :action => "new"
+  post "/create_drink_vote", :controller => "drink_votes", :action => "create"
+
+  # READ
+  get "/drink_votes", :controller => "drink_votes", :action => "index"
+  get "/drink_votes/:id", :controller => "drink_votes", :action => "show"
+
+  # UPDATE
+  get "/drink_votes/:id/edit", :controller => "drink_votes", :action => "edit"
+  post "/update_drink_vote/:id", :controller => "drink_votes", :action => "update"
+
+  # DELETE
+  get "/delete_drink_vote/:id", :controller => "drink_votes", :action => "destroy"
+  #------------------------------
+
   # Routes for the Category resource:
   # CREATE
   get "/categories/new", :controller => "categories", :action => "new"
