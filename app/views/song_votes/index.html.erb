@@ -16,7 +16,7 @@
 
       <% @song_votes.each do |song_vote| %>
       <tr>
-        <td><%= song_vote.user_id %></td>
+        <td><%= song_vote.user.email %></td>
         <td><%= song_vote.song_id %></td>
         <td>
           <a href="/song_votes/<%= song_vote.id %>" class="btn btn-primary">Show</a>
