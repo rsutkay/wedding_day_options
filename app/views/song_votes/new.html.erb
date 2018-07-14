@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @song_vote.errors.any? %>
+  <% @song_vote.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Song Vote</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_song_vote" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @song_vote.user_id %>">
+      </div>
+
+      <!-- Label and input for song_id -->
+      <div class="form-group">
+        <label for="song_id" class="control-label">
+          Song
+        </label>
+
+        <input type="text" id="song_id" name="song_id" placeholder="Song" class="form-control" value="<%= @song_vote.song_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Song Vote
+      </button>
+      or
+      <a href="/song_votes">Cancel</a>
+    </form>
+  </div>
+</div>

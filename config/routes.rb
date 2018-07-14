@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Song_vote resource:
+  # CREATE
+  get "/song_votes/new", :controller => "song_votes", :action => "new"
+  post "/create_song_vote", :controller => "song_votes", :action => "create"
+
+  # READ
+  get "/song_votes", :controller => "song_votes", :action => "index"
+  get "/song_votes/:id", :controller => "song_votes", :action => "show"
+
+  # UPDATE
+  get "/song_votes/:id/edit", :controller => "song_votes", :action => "edit"
+  post "/update_song_vote/:id", :controller => "song_votes", :action => "update"
+
+  # DELETE
+  get "/delete_song_vote/:id", :controller => "song_votes", :action => "destroy"
+  #------------------------------
+
   # Routes for the Artist resource:
   # CREATE
   get "/artists/new", :controller => "artists", :action => "new"
