@@ -19,7 +19,7 @@
       <tr>
         <td><%= song.artist.name %></td>
         <td><%= song.name %></td>
-        <td><%= song.user_id %></td>
+        <td><%= song.user.email %></td>
         <td>
           <a href="/songs/<%= song.id %>" class="btn btn-primary">Show</a>
           <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>
