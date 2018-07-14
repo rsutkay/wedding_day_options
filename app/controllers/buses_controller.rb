@@ -10,7 +10,7 @@ class BusesController < ApplicationController
   end
 
   def index
-    @buses = Bus.all
+    @buses = [current_user.bus]
 
     render("buses/index.html.erb")
   end
