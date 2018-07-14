@@ -10,7 +10,8 @@ class DrinksController < ApplicationController
   end
 
   def index
-    @drinks = Drink.page(params[:page]).per(10)
+    @q = Drink.ransack(params[:q])
+    @drinks = @q.result(:distinct => true).includes(:user, :drink_votes, :category, :votes).page(params[:page]).per(10)
 
     render("drinks/index.html.erb")
   end

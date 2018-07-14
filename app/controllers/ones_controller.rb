@@ -1,6 +1,7 @@
 class OnesController < ApplicationController
   def index
-    @ones = One.page(params[:page]).per(10)
+    @q = One.ransack(params[:q])
+    @ones = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("ones/index.html.erb")
   end
