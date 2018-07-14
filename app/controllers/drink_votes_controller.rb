@@ -1,4 +1,14 @@
 class DrinkVotesController < ApplicationController
+  before_action :current_user_must_be_drink_vote_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_drink_vote_user
+    drink_vote = DrinkVote.find(params[:id])
+
+    unless current_user == drink_vote.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @drink_votes = DrinkVote.all
 

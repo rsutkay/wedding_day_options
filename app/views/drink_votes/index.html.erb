@@ -20,8 +20,11 @@
         <td><%= drink_vote.drink.name %></td>
         <td>
           <a href="/drink_votes/<%= drink_vote.id %>" class="btn btn-primary">Show</a>
-          <a href="/drink_votes/<%= drink_vote.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_drink_vote/<%= drink_vote.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == drink_vote.user %>
+            <a href="/drink_votes/<%= drink_vote.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_drink_vote/<%= drink_vote.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

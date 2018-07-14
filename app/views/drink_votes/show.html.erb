@@ -17,12 +17,14 @@
       <a href="/drink_votes" class="btn btn-primary">
         Back
       </a>
-      <a href="/drink_votes/<%= @drink_vote.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_drink_vote/<%= @drink_vote.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @drink_vote.user %>
+        <a href="/drink_votes/<%= @drink_vote.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_drink_vote/<%= @drink_vote.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
