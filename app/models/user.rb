@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_one    :bus,
+             :dependent => :destroy
+
   has_many   :song_votes,
              :dependent => :destroy
 
