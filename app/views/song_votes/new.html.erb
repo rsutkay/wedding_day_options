@@ -33,7 +33,7 @@
           Song
         </label>
 
-        <input type="text" id="song_id" name="song_id" placeholder="Song" class="form-control" value="<%= @song_vote.song_id %>">
+        <%= select_tag(:song_id, options_from_collection_for_select(Song.all, :id, :name, @song_vote.song_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
