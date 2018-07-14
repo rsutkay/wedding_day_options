@@ -1,5 +1,5 @@
 class DrinksController < ApplicationController
-  before_action :current_user_must_be_drink_user, :only => [:edit, :update, :destroy]
+  before_action :current_user_must_be_drink_user, :only => [:show, :edit, :update, :destroy]
 
   def current_user_must_be_drink_user
     drink = Drink.find(params[:id])
