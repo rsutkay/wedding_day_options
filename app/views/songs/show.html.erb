@@ -59,6 +59,23 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_song_vote" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for song_id -->
+      <input type="hidden" name="song_id" value="<%= @song.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Song Vote
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

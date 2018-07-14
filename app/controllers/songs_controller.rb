@@ -16,6 +16,7 @@ class SongsController < ApplicationController
   end
 
   def show
+    @song_vote = SongVote.new
     @song = Song.find(params[:id])
 
     render("songs/show.html.erb")
