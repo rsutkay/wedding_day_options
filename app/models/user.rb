@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :ones,
+             :dependent => :destroy
+
   has_many   :drinks
 
   has_many   :drink_votes,
