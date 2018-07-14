@@ -23,3 +23,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Artist has many songs -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Songs
+      </li>
+
+      <% @artist.songs.each do |song| %>
+        <li class="list-group-item">
+          <a href="/songs/<%= song.id %>">
+            <%= song.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/songs/<%= song.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_song/<%= song.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

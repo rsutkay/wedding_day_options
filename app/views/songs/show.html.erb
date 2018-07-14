@@ -29,3 +29,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Song has many song_votes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Song Votes
+      </li>
+
+      <% @song.song_votes.each do |song_vote| %>
+        <li class="list-group-item">
+          <a href="/song_votes/<%= song_vote.id %>">
+            <%= song_vote.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/song_votes/<%= song_vote.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/song_votes/<%= song_vote.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_song_vote/<%= song_vote.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -20,3 +20,189 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many drink_votes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Drink Votes
+      </li>
+
+      <% @user.drink_votes.each do |drink_vote| %>
+        <li class="list-group-item">
+          <a href="/drink_votes/<%= drink_vote.id %>">
+            <%= drink_vote.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/drink_votes/<%= drink_vote.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/drink_votes/<%= drink_vote.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_drink_vote/<%= drink_vote.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many drinks -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Drinks
+      </li>
+
+      <% @user.drinks.each do |drink| %>
+        <li class="list-group-item">
+          <a href="/drinks/<%= drink.id %>">
+            <%= drink.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/drinks/<%= drink.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/drinks/<%= drink.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_drink/<%= drink.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many ones -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Ones
+      </li>
+
+      <% @user.ones.each do |one| %>
+        <li class="list-group-item">
+          <a href="/ones/<%= one.id %>">
+            <%= one.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/ones/<%= one.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/ones/<%= one.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_one/<%= one.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many songs -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Songs
+      </li>
+
+      <% @user.songs.each do |song| %>
+        <li class="list-group-item">
+          <a href="/songs/<%= song.id %>">
+            <%= song.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/songs/<%= song.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_song/<%= song.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many song_votes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Song Votes
+      </li>
+
+      <% @user.song_votes.each do |song_vote| %>
+        <li class="list-group-item">
+          <a href="/song_votes/<%= song_vote.id %>">
+            <%= song_vote.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/song_votes/<%= song_vote.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/song_votes/<%= song_vote.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_song_vote/<%= song_vote.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many votes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Votes
+      </li>
+
+      <% @user.votes.each do |drink| %>
+        <li class="list-group-item">
+          <a href="/drinks/<%= drink.id %>">
+            <%= drink.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/drinks/<%= drink.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/drinks/<%= drink.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_drink/<%= drink.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
