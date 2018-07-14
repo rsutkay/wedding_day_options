@@ -19,6 +19,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :votes,
+             :through => :drink_votes,
+             :source => :drink
+
   # Validations
 
   # Include default devise modules. Others available are:

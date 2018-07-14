@@ -11,6 +11,10 @@ class Drink < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :votes,
+             :through => :drink_votes,
+             :source => :user
+
   # Validations
 
 end
