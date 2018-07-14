@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @song_vote.user_id %></dd>
+      <dd>
+        <% if @song_vote.user.present? %>
+          <a href="/users/<%= @song_vote.user_id %>">
+            <%= @song_vote.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Song</dt>
-      <dd><%= @song_vote.song_id %></dd>
+      <dd>
+        <% if @song_vote.song.present? %>
+          <a href="/songs/<%= @song_vote.song_id %>">
+            <%= @song_vote.song.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

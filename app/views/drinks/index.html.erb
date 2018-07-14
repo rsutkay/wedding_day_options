@@ -18,8 +18,20 @@
       <% @drinks.each do |drink| %>
       <tr>
         <td><%= drink.name %></td>
-        <td><%= drink.category.name %></td>
-        <td><%= drink.user.email %></td>
+        <td>
+          <% if drink.category.present? %>
+            <a href="/categories/<%= drink.category.id %>">
+              <%= drink.category.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if drink.user.present? %>
+            <a href="/users/<%= drink.user.id %>">
+              <%= drink.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/drinks/<%= drink.id %>" class="btn btn-primary">Show</a>
           

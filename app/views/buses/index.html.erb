@@ -18,7 +18,13 @@
       <% @buses.each do |bus| %>
       <tr>
         <td><%= bus.need %></td>
-        <td><%= bus.user.email %></td>
+        <td>
+          <% if bus.user.present? %>
+            <a href="/users/<%= bus.user.id %>">
+              <%= bus.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= bus.passengers %></td>
         <td>
           <a href="/buses/<%= bus.id %>" class="btn btn-primary">Show</a>

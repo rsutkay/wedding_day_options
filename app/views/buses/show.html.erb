@@ -9,7 +9,13 @@
       <dd><%= @bus.need %></dd>
 
       <dt>User</dt>
-      <dd><%= @bus.user_id %></dd>
+      <dd>
+        <% if @bus.user.present? %>
+          <a href="/users/<%= @bus.user_id %>">
+            <%= @bus.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Passengers</dt>
       <dd><%= @bus.passengers %></dd>

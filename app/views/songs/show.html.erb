@@ -6,13 +6,25 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Artist</dt>
-      <dd><%= @song.artist_id %></dd>
+      <dd>
+        <% if @song.artist.present? %>
+          <a href="/artists/<%= @song.artist_id %>">
+            <%= @song.artist.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Name</dt>
       <dd><%= @song.name %></dd>
 
       <dt>User</dt>
-      <dd><%= @song.user_id %></dd>
+      <dd>
+        <% if @song.user.present? %>
+          <a href="/users/<%= @song.user_id %>">
+            <%= @song.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

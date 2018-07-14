@@ -16,8 +16,20 @@
 
       <% @song_votes.each do |song_vote| %>
       <tr>
-        <td><%= song_vote.user.email %></td>
-        <td><%= song_vote.song.name %></td>
+        <td>
+          <% if song_vote.user.present? %>
+            <a href="/users/<%= song_vote.user.id %>">
+              <%= song_vote.user.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if song_vote.song.present? %>
+            <a href="/songs/<%= song_vote.song.id %>">
+              <%= song_vote.song.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/song_votes/<%= song_vote.id %>" class="btn btn-primary">Show</a>
           
