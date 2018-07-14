@@ -47,8 +47,6 @@ class DrinkVotesController < ApplicationController
 
   def update
     @drink_vote = DrinkVote.find(params[:id])
-
-    @drink_vote.user_id = params[:user_id]
     @drink_vote.drink_id = params[:drink_id]
 
     save_status = @drink_vote.save
