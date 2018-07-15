@@ -7,5 +7,9 @@ class Category < ApplicationRecord
   # Indirect associations
 
   # Validations
+  
+  validates :name, :uniqueness => true
+
+  validates :name, :presence => true
 
 end

@@ -1,0 +1,82 @@
+<% if @song_vote.errors.any? %>
+  <% @song_vote.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Song Leaderboard
+  <a href="/song_votes/new" class="btn btn-lg btn-success">New Song Vote</a>
+</h1>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Song
+    </th>
+
+    <!--<th>-->
+    <!--  Brand-->
+    <!--</th>-->
+
+    <th>
+      Number of Votes
+    </th>
+
+  <!--  <th>-->
+  <!--    Created at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Updated at-->
+  <!--  </th>-->
+
+    <th>
+    </th>
+  </tr>
+  
+  <% @leaderboard.each do |song| %>
+    <% if song.song_votes.present? %>
+      <tr>
+        <td>
+          <% if song.song_votes.present? %>
+            <% if current_user.id == song.user_id %>
+              <a href="/songs/<%= song.id %>">
+                <%= song.name %>
+              </a>
+               by 
+              <a href="/artists/<%= song.artist.id %>">
+                <%= song.artist.name %>
+              </a>
+            <% else %>
+              <%= song.name %> by <%= song.artist.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if song.song_votes.present? %>
+            <%= song.song_votes.count %>
+          <% end %>
+        </td>
+        <td>
+          <% if song.song_votes.present? %>
+            <form action="/create_song_vote" method="post">
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+              <input type="hidden" id="song_id" name="song_id" class="form-control" value="<%= song.id %>">
+              <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+              <button class="btn btn-block btn-outline-secondary">
+                Vote for this song
+              </button>
+            </form>
+          <% end %>
+          <!--<a href="/votes/new" class="btn btn-lg btn-success">Vote for this drink</a>-->
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

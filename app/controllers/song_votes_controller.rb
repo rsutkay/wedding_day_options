@@ -33,6 +33,11 @@ class SongVotesController < ApplicationController
 
     @song_vote.user_id = params[:user_id]
     @song_vote.song_id = params[:song_id]
+    
+    @songs = Song.all
+    @leaderboard = @songs.sort_by do |song|
+      song.song_votes.count
+    end.reverse
 
     save_status = @song_vote.save
 
@@ -41,12 +46,61 @@ class SongVotesController < ApplicationController
 
       case referer
       when "/song_votes/new", "/create_song_vote"
-        redirect_to("/song_votes")
+        if current_user.votes.count == 2
+          if current_user.song_votes.count == 1
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You only have 1 of your 3 beverage votes left, but you already voted for your song.")
+          else
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You only have 1 of your 3 beverage votes left, and you still have 1 song vote left!")
+          end
+        elsif current_user.votes.count == 1
+          if current_user.song_votes.count == 1
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You have 2 of your 3 beverage votes left, but you already voted for your song.")
+          else
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You have 2 of your 3 beverage votes left, and you still have 1 song vote left!")
+          end
+        elsif current_user.votes.count == 3
+          if current_user.song_votes.count == 1
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You have 0 of your 3 beverage votes left, and you already voted for your song :/")
+          else
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You have 0 of your 3 beverage votes left, but you still have 1 song vote left!")
+          end
+        else
+          if current_user.song_votes.count == 1
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You have 3 of your 3 beverage votes left, but you already voted for your song.")
+          else
+            redirect_to("/song_leaderboard", :notice => "Song vote entered! You have 3 of your 3 beverage votes left, and you still have 1 song vote left!")
+          end
+        end
       else
-        redirect_back(:fallback_location => "/", :notice => "Song vote created successfully.")
+        if current_user.votes.count == 2
+          if current_user.song_votes.count == 1
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You only have 1 of your 3 beverage votes left, but you already voted for your song.")
+          else
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You only have 1 of your 3 beverage votes left, and you still have 1 song vote left!")
+          end
+        elsif current_user.votes.count == 1
+          if current_user.song_votes.count == 1
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You have 2 of your 3 beverage votes left, but you already voted for your song.")
+          else
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You have 2 of your 3 beverage votes left, and you still have 1 song vote left!")
+          end
+        elsif current_user.votes.count == 3
+          if current_user.song_votes.count == 1
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You have 0 of your 3 beverage votes left, and you already voted for your song :/")
+          else
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You have 0 of your 3 beverage votes left, but you still have 1 song vote left!")
+          end
+        else
+          if current_user.song_votes.count == 1
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You have 3 of your 3 beverage votes left, but you already voted for your song.")
+          else
+            redirect_back(:fallback_location => "/", :notice => "Song vote entered! You have 3 of your 3 beverage votes left, and you still have 1 song vote left!")
+          end
+        end
+        # redirect_back(:fallback_location => "/", :notice => "Song vote created successfully.")
       end
     else
-      render("song_votes/new.html.erb")
+      render("song_leaderboard/index.html.erb")
     end
   end
 

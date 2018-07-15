@@ -1,0 +1,153 @@
+<h1>
+  All of my selections
+  <a href="/drink_votes/new" class="btn btn-lg btn-success">New Beverage Vote</a>
+  <a href="/song_votes/new" class="btn btn-lg btn-success">New Song Vote</a>
+  <a href="/buses/new" class="btn btn-lg btn-success">Choose Bus Option</a>
+  <a href="/ones/new" class="btn btn-lg btn-success">Fill Out Plus-One Information</a>
+</h1>
+
+<hr>
+
+<h3>
+  My votes for beverages
+</h3>
+<table class="table">
+  <tr>
+    <th>
+      Beverage
+    </th>
+
+    <th>
+      Actions
+    </th>
+
+  <!--  <th>-->
+  <!--    Email-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Created at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Updated at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--  </th>-->
+  </tr>
+
+  <% @drinkvotes.each do |vote| %>
+  <tr>
+    <td>
+      <% if vote.drink.present? %>
+        <!--<a href="/drinks/<%= vote.drink.id %>">-->
+          <%= vote.drink.name %>
+        <!--</a>-->
+      <% end %>
+    </td>
+    <td>
+      <!--<a href="/drink_votes/<%= vote.id %>" class="btn btn-primary">Show</a>-->
+      
+      <% if current_user == vote.user %>
+        <!--<a href="/drink_votes/<%= vote.id %>/edit" class="btn btn-warning">Edit</a>-->
+        <a href="/delete_drink_vote/<%= vote.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>
+  Beverages that I have added
+</h3>
+<table class="table">
+  <tr>
+    <th>
+      Beverage
+    </th>
+
+    <th>
+      Actions
+    </th>
+
+  <!--  <th>-->
+  <!--    Email-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Created at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Updated at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--  </th>-->
+  </tr>
+
+  <% @drinks.each do |drink| %>
+  <tr>
+    <td>
+      <% if drink.present? %>
+        <a href="/drinks/<%= drink.id %>">
+          <%= drink.name %>
+        </a>
+      <% end %>
+    </td>
+    <td>
+      <a href="/drinks/<%= drink.id %>" class="btn btn-primary">Show</a>
+      <a href="/drinks/<%= drink.id %>/edit" class="btn btn-warning">Edit</a>
+      <a href="/delete_drink/<%= drink.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<table class="table">
+  <tr>
+    <th>
+      Song
+    </th>
+
+    <th>
+      Actions
+    </th>
+
+  <!--  <th>-->
+  <!--    Email-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Created at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Updated at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--  </th>-->
+  </tr>
+
+  <% @songvotes.each do |vote| %>
+  <tr>
+    <td>
+      <% if vote.song.present? %>
+        <!--<a href="/songs/<%= vote.song.id %>">-->
+          <%= vote.song.name %> by <%= vote.song.artist.name %>
+        <!--</a>-->
+      <% end %>
+    </td>
+    <td>
+      <!--<a href="/drink_votes/<%= vote.id %>" class="btn btn-primary">Show</a>-->
+      
+      <% if current_user == vote.user %>
+        <!--<a href="/drink_votes/<%= vote.id %>/edit" class="btn btn-warning">Edit</a>-->
+        <a href="/delete_song_vote/<%= vote.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "drinks#index"
+  root :to => "drink_leaderboard#index"
   # Routes for the Bus resource:
   # CREATE
   get "/buses/new", :controller => "buses", :action => "new"
@@ -143,6 +143,10 @@ Rails.application.routes.draw do
   # READ
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
+  
+  get("/my_votes", { :controller => "my_votes", :action => "index"})
+  get("/drink_leaderboard", { :controller => "drink_leaderboard", :action => "index"})
+  get("/song_leaderboard", { :controller => "song_leaderboard", :action => "index"})
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

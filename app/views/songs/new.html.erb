@@ -25,6 +25,7 @@
         </label>
 
         <%= select_tag(:artist_id, options_from_collection_for_select(Artist.all, :id, :name, @song.artist_id), :class => "form-control") %>
+        or <a href="/artists/new">add a new artist</a> first
       </div>
 
       <!-- Label and input for name -->
@@ -43,7 +44,7 @@
         Create Song
       </button>
       or
-      <a href="/songs">Cancel</a>
+      <a href="/song_leaderboard">Cancel</a>
     </form>
   </div>
 </div>

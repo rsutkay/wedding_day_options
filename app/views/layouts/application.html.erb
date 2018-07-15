@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>WeddingDayOptions</title>
+  <title>Help us plan our special day!</title>
 
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -35,26 +35,64 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">WeddingDayOptions</a>
+        <a href="/" class="navbar-brand">Wedding Day Options!</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/buses">Buses</a></li>
-          <li><a href="/song_votes">Song Votes</a></li>
-          <li><a href="/artists">Artists</a></li>
-          <li><a href="/songs">Songs</a></li>
-          <li><a href="/ones">Ones</a></li>
-          <li><a href="/drink_votes">Drink Votes</a></li>
-          <li><a href="/categories">Categories</a></li>
-          <li><a href="/drinks">Drinks</a></li>
-          <li><a href="/users">Users</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
+          <% if current_user.present? %>
+            <% if current_user.email == "robbie@example.com" %>
+              <li><a href="/categories">Categories</a></li>
+              <li><a href="/users">Users</a></li>
+              <li><a href="/rails/info">Sitemap</a></li>
+              <li><a href="/drink_votes">Drink Votes</a></li>
+              <li><a href="/song_votes">Song Votes</a></li>
+              <li><a href="/artists">Artists</a></li>
+              <li><a href="/songs">Songs</a></li>
+              <li><a href="/drinks">Drinks</a></li>
+            <% end %>
+          <% end %>
+          <li><a href="/drink_leaderboard"> Beverage Leaderboard</a></li>
+          <li><a href="/song_leaderboard"> Song Leaderboard</a></li>
+          <li><a href="/buses">Bus Option</a></li>
+          <li><a href="/ones">Plus-One Information</a></li>
+          <li><a href="/my_votes">My Selections</a></li>
+          
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
+            <!--<% if current_user.votes.count == 2 %>-->
+            <!--  <% if current_user.song_votes.count == 1 %>-->
+            <!--    <li>You only have 1 of your 3 beverage votes left, but you already voted for your song.</li>-->
+            <!--  <% else %>-->
+                
+            <!--    <li>You only have 1 of your 3 beverage votes left, and you still have 1 song vote left!</li>-->
+            <!--  <% end %>-->
+            <!--<% elsif current_user.votes.count == 1 %>-->
+            <!--  <% if current_user.song_votes.count == 1 %>-->
+            <!--    <li>You have 2 of your 3 beverage votes left, but you already voted for your song.</li>-->
+            <!--  <% else %>-->
+                
+            <!--    <li>You have 2 of your 3 beverage votes left, and you still have 1 song vote left!</li>-->
+            <!--  <% end %>-->
+            <!--<% elsif current_user.votes.count == 3 %>-->
+            <!--  <% if current_user.song_votes.count == 1 %>-->
+            <!--    <li>You have 0 of your 3 beverage votes left, and you already voted for your song :/</li>-->
+            <!--  <% else %>-->
+                
+            <!--    <li>You have 0 of your 3 beverage votes left (:/), and you still have 1 song vote left!</li>-->
+            <!--  <% end %>-->
+            <!--  <li>You have 0 beverage votes left :/</li>-->
+            <!--<% else %>-->
+            <!--  <% if current_user.song_votes.count == 1 %>-->
+            <!--    <li>You have 3 of your 3 beverage votes left, but you already voted for your song.</li>-->
+            <!--  <% else %>-->
+                
+            <!--    <li>You have 3 of your 3 beverage votes left, and you still have 1 song vote left!</li>-->
+            <!--  <% end %>-->
+            <!--<% end %>-->
             <li>
               <a href="/users/edit">
                 <%= current_user.email %>

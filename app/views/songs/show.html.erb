@@ -29,7 +29,7 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/songs" class="btn btn-primary">
+      <a href="/song_leaderboard" class="btn btn-primary">
         Back
       </a>
       <% if current_user == @song.user %>
@@ -56,7 +56,7 @@
       <% @song.song_votes.each do |song_vote| %>
         <li class="list-group-item">
           <a href="/song_votes/<%= song_vote.id %>">
-            <%= song_vote.user_id %>
+            <%= song_vote.user.email %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/song_votes/<%= song_vote.id %>" class="btn btn-primary">
@@ -83,9 +83,9 @@
       <!-- Label and input for song_id -->
       <input type="hidden" name="song_id" value="<%= @song.id %>">
 
-      <button class="btn btn-block btn-success">
-        Create Song Vote
-      </button>
+      <!--<button class="btn btn-block btn-success">-->
+      <!--  Create Song Vote-->
+      <!--</button>-->
     </form>
       </li>
     </ul>

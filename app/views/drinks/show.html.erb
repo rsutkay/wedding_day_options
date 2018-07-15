@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Drink #<%= @drink.id %></h3>
+  <h3>Beverage #<%= @drink.id %></h3>
 </div>
 
 <div class="row">
@@ -11,9 +11,9 @@
       <dt>Category</dt>
       <dd>
         <% if @drink.category.present? %>
-          <a href="/categories/<%= @drink.category_id %>">
+          <!--<a href="/categories/<%= @drink.category_id %>">-->
             <%= @drink.category.name %>
-          </a>
+          <!--</a>-->
         <% end %>
       </dd>
 
@@ -29,7 +29,7 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/drinks" class="btn btn-primary">
+      <a href="/drink_leaderboard" class="btn btn-primary">
         Back
       </a>
       <% if current_user == @drink.user %>
@@ -50,25 +50,29 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Drink Votes
+        Beverage Votes
       </li>
 
       <% @drink.drink_votes.each do |drink_vote| %>
         <li class="list-group-item">
-          <a href="/drink_votes/<%= drink_vote.id %>">
-            <%= drink_vote.user_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/drink_votes/<%= drink_vote.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+          <% if current_user.id == drink_vote.user_id %>
+            <a href="/drink_votes/<%= drink_vote.id %>">
+              <%= drink_vote.user.email %>
             </a>
-            <a href="/drink_votes/<%= drink_vote.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_drink_vote/<%= drink_vote.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
+            <div class="btn-group btn-group-xs pull-right">
+              <a href="/drink_votes/<%= drink_vote.id %>" class="btn btn-primary">
+                <i class="fa fa-search-plus"></i>
+              </a>
+              <a href="/drink_votes/<%= drink_vote.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_drink_vote/<%= drink_vote.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          <% else %>
+            <%= drink_vote.user.email %>
+          <% end %>
         </li>
       <% end %>
 
@@ -84,7 +88,7 @@
       <input type="hidden" name="drink_id" value="<%= @drink.id %>">
 
       <button class="btn btn-block btn-success">
-        Create Drink Vote
+        Create Beverage Vote
       </button>
     </form>
       </li>
@@ -94,31 +98,31 @@
 
 <!-- A Drink has many votes -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Votes
-      </li>
+<!--<div class="row">-->
+<!--  <div class="col-md-12">-->
+<!--    <ul class="list-group">-->
+<!--      <li class="list-group-item list-group-item-info">-->
+<!--        Votes-->
+<!--      </li>-->
 
-      <% @drink.votes.each do |user| %>
-        <li class="list-group-item">
-          <a href="/users/<%= user.id %>">
-            <%= user.email %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/users/<%= user.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<!--      <% @drink.votes.each do |user| %>-->
+<!--        <li class="list-group-item">-->
+<!--          <a href="/users/<%= user.id %>">-->
+<!--            <%= user.email %>-->
+<!--          </a>-->
+<!--          <div class="btn-group btn-group-xs pull-right">-->
+<!--            <a href="/users/<%= user.id %>" class="btn btn-primary">-->
+<!--              <i class="fa fa-search-plus"></i>-->
+<!--            </a>-->
+<!--            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">-->
+<!--              <i class="fa fa-edit"></i>-->
+<!--            </a>-->
+<!--            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">-->
+<!--              <i class="fa fa-trash-o"></i>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      <% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->

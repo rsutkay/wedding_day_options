@@ -31,7 +31,7 @@ class ArtistsController < ApplicationController
 
       case referer
       when "/artists/new", "/create_artist"
-        redirect_to("/artists")
+        redirect_to("/songs/new")
       else
         redirect_back(:fallback_location => "/", :notice => "Artist created successfully.")
       end

@@ -43,9 +43,9 @@ class DrinksController < ApplicationController
 
       case referer
       when "/drinks/new", "/create_drink"
-        redirect_to("/drinks")
+        redirect_to("/drink_leaderboard")
       else
-        redirect_back(:fallback_location => "/", :notice => "Drink created successfully.")
+        redirect_back(:fallback_location => "/", :notice => "Beverage created successfully.")
       end
     else
       render("drinks/new.html.erb")
@@ -72,9 +72,9 @@ class DrinksController < ApplicationController
 
       case referer
       when "/drinks/#{@drink.id}/edit", "/update_drink"
-        redirect_to("/drinks/#{@drink.id}", :notice => "Drink updated successfully.")
+        redirect_to("/drinks/#{@drink.id}", :notice => "Beverage updated successfully.")
       else
-        redirect_back(:fallback_location => "/", :notice => "Drink updated successfully.")
+        redirect_back(:fallback_location => "/", :notice => "Beverage updated successfully.")
       end
     else
       render("drinks/edit.html.erb")
@@ -87,9 +87,9 @@ class DrinksController < ApplicationController
     @drink.destroy
 
     if URI(request.referer).path == "/drinks/#{@drink.id}"
-      redirect_to("/", :notice => "Drink deleted.")
+      redirect_to("/", :notice => "Beverage deleted.")
     else
-      redirect_back(:fallback_location => "/", :notice => "Drink deleted.")
+      redirect_back(:fallback_location => "/", :notice => "Beverage deleted.")
     end
   end
 end

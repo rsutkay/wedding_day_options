@@ -13,5 +13,15 @@ class Song < ApplicationRecord
   # Indirect associations
 
   # Validations
+  
+  validates :artist_id, :presence => true
+
+  validates :name, :uniqueness => { :scope => [ :artist_id] }
+
+  validates :name, :presence => true
+  
+  def voteSongArtist
+    "#{name} by #{artist.name}" 
+  end
 
 end

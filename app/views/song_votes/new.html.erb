@@ -27,14 +27,15 @@
           Song
         </label>
 
-        <%= select_tag(:song_id, options_from_collection_for_select(Song.all, :id, :name, @song_vote.song_id), :class => "form-control") %>
+        <%= select_tag(:song_id, options_from_collection_for_select(Song.all, :id, 'voteSongArtist', @song_vote.song_id), :class => "form-control") %>
+        or <a href="/songs/new">add a new song</a> first
       </div>
 
       <button class="btn btn-success">
         Create Song Vote
       </button>
       or
-      <a href="/song_votes">Cancel</a>
+      <a href="/song_leaderboard">Cancel</a>
     </form>
   </div>
 </div>
