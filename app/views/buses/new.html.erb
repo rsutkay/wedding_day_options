@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Bus</h3>
+  <h3>How many people will be riding the buses?</h3>
 </div>
 
 <div class="row">
@@ -19,12 +19,12 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for need -->
-      <div class="checkbox">
-        <label for="need">
-          <input type="checkbox" id="need" name="need" value="1" <%= "checked" if @bus.need %>>
-          Need
-        </label>
-      </div>
+      <!--<div class="checkbox">-->
+      <!--  <label for="need">-->
+          <input type="hidden" id="need" name="need" value="1">
+      <!--    Need-->
+      <!--  </label>-->
+      <!--</div>-->
 
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -32,14 +32,14 @@
       <!-- Label and input for passengers -->
       <div class="form-group">
         <label for="passengers" class="control-label">
-          Passengers
+          Bus Passengers
         </label>
 
-        <input type="text" id="passengers" name="passengers" placeholder="Passengers" class="form-control" value="<%= @bus.passengers %>">
+        <input type="text" id="passengers" name="passengers" placeholder="Bus Passengers" class="form-control" value="<%= @bus.passengers %>">
       </div>
 
       <button class="btn btn-success">
-        Create Bus
+        Save bus choice
       </button>
       or
       <a href="/buses">Cancel</a>

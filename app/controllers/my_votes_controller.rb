@@ -3,6 +3,7 @@ class MyVotesController < ApplicationController
     @drinkvotes = current_user.drink_votes.all
     @drinks = current_user.drinks.all
     @songvotes = current_user.song_votes.all
+    @songs = current_user.songs.all
 
     render("my_votes/index.html.erb")
   end

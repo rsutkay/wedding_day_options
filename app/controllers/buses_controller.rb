@@ -29,25 +29,26 @@ class BusesController < ApplicationController
 
   def create
     @bus = Bus.new
-
-    @bus.need = params[:need]
+    
     @bus.user_id = params[:user_id]
-    @bus.passengers = params[:passengers]
-
-    save_status = @bus.save
-
-    if save_status == true
-      referer = URI(request.referer).path
-
-      case referer
-      when "/buses/new", "/create_bus"
-        redirect_to("/buses")
+    
+      @bus.passengers = params[:passengers]
+      @bus.need = params[:need]
+  
+      save_status = @bus.save
+  
+      if save_status == true
+        referer = URI(request.referer).path
+  
+        case referer
+        when "/buses/new", "/create_bus"
+          redirect_to("/", :notice => "Riders recorded successfully.")
+        else
+          redirect_back(:fallback_location => "/", :notice => "Riders recorded successfully.")
+        end
       else
-        redirect_back(:fallback_location => "/", :notice => "Bus created successfully.")
+        render("buses/new.html.erb")
       end
-    else
-      render("buses/new.html.erb")
-    end
   end
 
   def edit

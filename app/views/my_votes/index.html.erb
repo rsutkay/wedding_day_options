@@ -105,6 +105,9 @@
   <% end %>
 </table>
 
+<h3>
+  My vote for a song
+</h3>
 <table class="table">
   <tr>
     <th>
@@ -151,3 +154,142 @@
   </tr>
   <% end %>
 </table>
+
+<h3>
+  Songs that I have added
+</h3>
+<table class="table">
+  <tr>
+    <th>
+      Song
+    </th>
+
+    <th>
+      Actions
+    </th>
+
+  <!--  <th>-->
+  <!--    Email-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Created at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Updated at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--  </th>-->
+  </tr>
+
+  <% @songs.each do |song| %>
+  <tr>
+    <td>
+      <% if song.present? %>
+        <a href="/songs/<%= song.id %>">
+          <%= song.name %>
+        </a>
+         by 
+        <a href="/artists/<%= song.artist.id %>">
+          <%= song.artist.name %>
+        </a>
+      <% end %>
+    </td>
+    <td>
+      <a href="/songs/<%= song.id %>" class="btn btn-primary">Show</a>
+      <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>
+      <a href="/delete_song/<%= song.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>
+  Your bus choice
+</h3>
+<table class="table">
+  <tr>
+    <th>
+      Bus choice
+    </th>
+    
+    <th>
+      Bus Passengers
+    </th>
+
+    <th>
+      Actions
+    </th>
+
+  <!--  <th>-->
+  <!--    Email-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Created at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--    Updated at-->
+  <!--  </th>-->
+
+  <!--  <th>-->
+  <!--  </th>-->
+  </tr>
+  
+  <tr>
+    <% if current_user.bus.present? %>
+      <% if current_user.bus.need = 0 %>
+        <td>
+          We (I) will not be riding the bus.
+        </td>
+        <td>
+          0
+        </td>
+        <td>
+          
+        </td>
+      <% else %>
+        <td>
+          We (I) will be riding the bus!
+        </td>
+        <td>
+          <%= current_user.bus.passengers %>
+        </td>
+        <td>
+          <a href="/buses/<%= current_user.bus.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_bus/<%= current_user.bus.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      <% end %>
+    <% else %>
+      <td>
+        No bus choice selected yet!
+      </td>
+      <td>
+        
+      </td>
+      <td>
+        
+      </td>
+    <% end %>
+  </tr>
+
+  <!--<% @songs.each do |song| %>-->
+  <!--<tr>-->
+  <!--  <td>-->
+  <!--    <% if song.present? %>-->
+  <!--      <a href="/songs/<%= song.id %>">-->
+  <!--        <%= song.name %>-->
+  <!--    <% end %>-->
+  <!--  </td>-->
+  <!--  <td>-->
+  <!--    <a href="/songs/<%= song.id %>" class="btn btn-primary">Show</a>-->
+  <!--    <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>-->
+  <!--    <a href="/delete_song/<%= song.id %>" class="btn btn-danger" rel="nofollow">Delete</a>-->
+  <!--  </td>-->
+  <!--</tr>-->
+  <!--<% end %>-->
+</table>
+
